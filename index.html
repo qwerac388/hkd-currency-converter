@@ -9,6 +9,21 @@
     <title>HKD Currency Converter</title>
   </head>
   <body>
+    <div class="container">
+      <div class="input-field">
+        <select id="original-currency"></select>
+        <input
+          type="number"
+          min="0.1"
+          id="amount"
+          placeholder=" Enter the amount"
+        />
+      </div>
+      <select id="currency"></select>
+      <div class="button-container">
+        <button id="convert">CONVERT</button>
+      </div>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>

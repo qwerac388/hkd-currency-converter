@@ -13,3 +13,21 @@ const currencyList = {
   TRY: { symbol: "TRY", name: "Turkish New Lira" },
   USD: { symbol: "USD", name: "United States Dollar" },
 };
+
+//original currency
+const select1 = document.getElementById("original-currency");
+for (let key in currencyList) {
+  const option = document.createElement("option");
+  option.textContent = `${currencyList[key].symbol} (${currencyList[key].name})`;
+  option.value = currencyList[key].symbol;
+  select1.appendChild(option);
+}
+
+//convert currency
+const select2 = document.getElementById("currency");
+for (let key in currencyList) {
+  const option = document.createElement("option");
+  option.textContent = `${currencyList[key].symbol} (${currencyList[key].name})`;
+  option.value = currencyList[key].symbol;
+  select2.appendChild(option);
+}
