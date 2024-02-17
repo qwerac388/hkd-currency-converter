@@ -45,6 +45,23 @@ swapButton.addEventListener("click", swapCurrencies);
 const convert = document.getElementById("convert");
 const result = document.querySelector(".result");
 
+//popular currencies buttons
+function setConversionCurrency(currencyValue) {
+  select2.value = currencyValue;
+  select1.value = "HKD";
+}
+
+const popularCurrencuButtons = document.querySelectorAll(
+  ".popular-currency-button"
+);
+
+popularCurrencuButtons.forEach((button) => {
+  button.addEventListener("click", function () {
+    const currency = this.getAttribute("data-currency");
+    setConversionCurrency(currency);
+  });
+});
+
 //convert button
 convert.addEventListener("click", function () {
   result.innerHTML = "";
