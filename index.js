@@ -68,6 +68,19 @@ convert.addEventListener("click", function () {
   const input = document.querySelector("input");
   console.log(`Initial Input Value: ${input.value}`);
 
+  //input Validation
+  if (input.value <= 0) {
+    errorMsg();
+    input.value = "";
+    console.log(`Invalid input reset: ${input.value}`);
+    result.style.display = "none";
+  } else {
+    hideError();
+    showPending();
+    result.style.display = "block";
+    console.log(`Valid input : ${input.value}`);
+  }
+
   const dropdown1Value = select1.value;
   const dropdown2Value = select2.value;
   console.log(`Dropdown1 value : ${dropdown1Value}`);
@@ -96,7 +109,28 @@ async function fetchData(inputValue, dropdown1Value, dropdown2Value) {
     lastUpdatedTime.classList.add("time");
     result.appendChild(convertedCurrency);
     result.appendChild(lastUpdatedTime);
+    hidePending();
   } catch (error) {
     console.error("Error:", error);
   }
+}
+
+function errorMsg() {
+  const error = document.querySelector(".error");
+  error.style.display = "block";
+}
+
+function hideError() {
+  const error = document.querySelector(".error");
+  error.style.display = "none";
+}
+
+function showPending() {
+  const pending = document.querySelector(".pending");
+  pending.style.display = "block";
+}
+
+function hidePending() {
+  const pending = document.querySelector(".pending");
+  pending.style.display = "none";
 }
