@@ -31,3 +31,55 @@ for (let key in currencyList) {
   option.value = currencyList[key].symbol;
   select2.appendChild(option);
 }
+
+//swap button
+function swapCurrencies() {
+  const temp = select1.value;
+  select1.value = select2.value;
+  select2.value = temp;
+}
+
+const swapButton = document.getElementById("swap");
+swapButton.addEventListener("click", swapCurrencies);
+
+const convert = document.getElementById("convert");
+const result = document.querySelector(".result");
+
+//convert button
+convert.addEventListener("click", function () {
+  result.innerHTML = "";
+  const input = document.querySelector("input");
+  console.log(`Initial Input Value: ${input.value}`);
+
+  const dropdown1Value = select1.value;
+  const dropdown2Value = select2.value;
+  console.log(`Dropdown1 value : ${dropdown1Value}`);
+  console.log(`Dropdown2 value : ${dropdown2Value}`);
+  fetchData(input.value, dropdown1Value, dropdown2Value);
+});
+
+async function fetchData(inputValue, dropdown1Value, dropdown2Value) {
+  try {
+    const response = await fetch(
+      `https://api.api-ninjas.com/v1/convertcurrency?want=${dropdown2Value}&have=${dropdown1Value}&amount=${inputValue}`,
+      {
+        method: "GET",
+        headers: { "X-Api-Key": "8shmkmy3KkvULZ75astEag==35ewYVYXu1rMDZy2" },
+        contentType: "application/json",
+      }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+    const convertedCurrency = document.createElement("p");
+    const lastUpdatedTime = document.createElement("p");
+    convertedCurrency.textContent = `${inputValue} ${currencyList[dropdown1Value].symbol} = ${data.new_amount} ${currencyList[dropdown2Value].symbol}`;
+    lastUpdatedTime.textContent = `Last Updated : ${new Date()}`;
+    lastUpdatedTime.classList.add("time");
+    result.appendChild(convertedCurrency);
+    result.appendChild(lastUpdatedTime);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
