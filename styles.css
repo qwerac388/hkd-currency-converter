@@ -8,6 +8,61 @@ body {
   font-weight: bold;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+video {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 270px;
+}
+
+input {
+  width: 190px;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 50px;
+  border: 5px solid #f8b517;
+  font-weight: bold;
+  color: #4f5565;
+  background-color: transparent;
+  display: inline;
+}
+
+#original-currency,
+#currency {
+  width: 290px;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 4px;
+  border-radius: 50px;
+  border: none;
+  border: 5px solid #f8b517;
+  font-weight: bold;
+  color: #4f5565;
+  background-color: transparent;
+}
+
+#original-currency {
+  width: 80px;
+}
+
+.result {
+  font-size: 20px;
+  width: 280px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 .error {
   color: red;
   display: none;
@@ -21,6 +76,72 @@ body {
   display: none;
   margin-top: 30px;
   margin-bottom: 10px;
+}
+
+/* button effects */
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 5px;
+}
+
+#convert,
+#swap,
+.popular-currency-button {
+  font-size: 25px;
+  width: 220px;
+  display: inline-block;
+  color: #4f5565;
+  --c: #f8b517; /* the color*/
+  cursor: pointer;
+  padding: 0.3em 0.7em;
+  font-weight: bold;
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 0 0 0.2em inset var(--c);
+  --_g: linear-gradient(var(--c) 0 0) no-repeat;
+  background: var(--_g) calc(var(--_p, 0%) - 100%) 0%,
+    var(--_g) calc(200% - var(--_p, 0%)) 0%,
+    var(--_g) calc(var(--_p, 0%) - 100%) 100%,
+    var(--_g) calc(200% - var(--_p, 0%)) 100%;
+  background-size: 50.5% calc(var(--_p, 0%) / 2 + 0.5%);
+  outline-offset: 0.1em;
+  transition: background-size 0.4s, background-position 0s 0.4s;
+}
+button:hover {
+  --_p: 100%;
+  transition: background-position 0.4s, background-size 0s;
+}
+button:active {
+  box-shadow: 0 0 9e9Q inset #0009;
+  background-color: var(--c);
+}
+
+#swap {
+  width: 60px;
+}
+
+.popular-currency-button {
+  width: 150px;
+  font-size: 15px;
+  padding: 6px;
+  margin-bottom: 5px;
+}
+
+.popular-container {
+  margin: 20px auto 10px 8px;
+}
+
+.time {
+  font-size: 15px;
+}
+
+.popular {
+  text-align: center;
+  margin: 10px auto;
+  font-size: 15px;
 }
 
 /* .dot-elastic */
